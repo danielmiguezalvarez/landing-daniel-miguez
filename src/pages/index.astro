@@ -1,20 +1,27 @@
 ---
 import About from "../components/About.astro";
 import CaseStudy from "../components/CaseStudy.astro";
+import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
 import Services from "../components/Services.astro";
 ---
 
-<Layout>
+<Layout
+	title="Daniel Míguez · Sistemas & Automatización"
+	description="Software a medida, automatización de procesos y domótica para empresas, negocios y viviendas."
+>
 	<Navbar />
 	<main>
 		<Hero />
 		<CaseStudy />
+		<ProcessSteps />
 		<Services />
 		<About />
+		<FAQ />
 	</main>
 	<Footer />
 </Layout>

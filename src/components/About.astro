@@ -1,13 +1,36 @@
+<script>
+	const portrait = document.querySelector<HTMLImageElement>("[data-portrait]");
+
+	if (portrait) {
+		const showFallback = () => portrait.classList.add("hidden");
+		portrait.addEventListener("error", showFallback, { once: true });
+
+		if (portrait.complete && portrait.naturalWidth === 0) {
+			showFallback();
+		}
+	}
+</script>
+
 <section id="sobre" class="border-t border-slate-200/80 bg-white">
-	<div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 sm:py-28">
+	<div class="mx-auto flex max-w-6xl flex-col items-start gap-8 px-5 py-20 sm:px-6 sm:py-28 md:flex-row md:items-center md:gap-12">
+		<div class="relative flex size-28 shrink-0 items-center justify-center overflow-hidden rounded-full bg-forest text-2xl font-semibold tracking-wide text-white ring-4 ring-forest/10 sm:size-36">
+			<span aria-hidden="true">DM</span>
+			<img
+				data-portrait
+				src="/daniel-miguez.jpg"
+				alt="Daniel Míguez"
+				class="absolute inset-0 size-full rounded-full object-cover"
+			/>
+		</div>
 		<div class="max-w-3xl">
-			<p class="text-sm font-medium tracking-wide text-petrol">Vigo</p>
+			<p class="text-sm font-medium tracking-wide text-forest">Daniel Míguez · Sistemas &amp; Automatización</p>
 			<h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-				Trato directo, de ingeniero a empresario
+				Desarrollo e integración para negocios y viviendas
 			</h2>
 			<p class="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
-				Soy ingeniero informático afincado en Vigo. No soy una plataforma sin cara ni una agencia lejana: analizo tu
-				problema, desarrollo el software e instalo la solución completa en tu local.
+				Soy Daniel Míguez, ingeniero informático. Trabajo con empresas, negocios y particulares
+				para analizar tareas repetitivas, sistemas de gestión e instalaciones. Desarrollo software a medida y
+				conecto soluciones de automatización y domótica con los procesos existentes.
 			</p>
 		</div>
 	</div>

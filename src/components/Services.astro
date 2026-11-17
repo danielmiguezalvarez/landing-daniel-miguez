@@ -1,19 +1,28 @@
 ---
 const services = [
 	{
-		title: "Portales de Gestión y Reservas",
-		description: "Tus clientes reservan, pagan y reciben su confirmación solos.",
+		title: "Automatización de Tareas y Procesos",
+		description:
+			"Elimina el trabajo manual repetitivo: sincronización de calendarios, avisos automáticos, facturación y flujos conectados entre tus herramientas actuales.",
+		icon: "automation",
+	},
+	{
+		title: "Software de Gestión y Reservas",
+		description:
+			"Paneles internos y sistemas de citas hechos exactamente a tu forma de trabajar, para jubilar el papel, las hojas de Excel sueltas y el caos por WhatsApp.",
 		icon: "calendar",
 	},
 	{
-		title: "Control de Accesos y Domótica",
-		description: "Apertura de puertas, tornos y encendido de luces sincronizados con tus reservas.",
+		title: "Control de Accesos para Negocios",
+		description:
+			"Apertura remota o automática de puertas, tornos y luces vinculada a horarios, reservas o pagos, sin necesidad de estar físicamente en el local.",
 		icon: "access",
 	},
 	{
-		title: "Software Interno a Medida",
-		description: "Paneles sencillos para jubilar el papel y el Excel en tu operativa diaria.",
-		icon: "panel",
+		title: "Domótica para Viviendas y Locales",
+		description:
+			"Control centralizado de climatización, iluminación, persianas, riego y seguridad desde el móvil o mediante escenas automáticas, sin depender de la nube.",
+		icon: "home",
 	},
 ];
 ---
@@ -22,13 +31,18 @@ const services = [
 	<div class="mx-auto max-w-6xl px-5 py-20 sm:px-6 sm:py-28">
 		<h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Servicios</h2>
 		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-			Tres formas de quitarte trabajo repetitivo, sin cambiar cómo atiendes a tus clientes.
+			Soluciones de software e integración técnica para procesos de negocio y viviendas.
 		</p>
-		<ul class="mt-12 grid gap-5 md:grid-cols-3">
+		<ul class="mt-12 grid gap-5 md:grid-cols-2">
 			{
 				services.map((service) => (
 					<li class="flex flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-						<span class="mb-6 flex size-11 items-center justify-center rounded-xl bg-petrol/10 text-petrol">
+						<span class="mb-6 flex size-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-900">
+							{service.icon === "automation" && (
+								<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+									<path d="M3 12h4l3-7 4 14 3-7h4" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							)}
 							{service.icon === "calendar" && (
 								<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
 									<rect x="3.5" y="5" width="17" height="15" rx="2" />
@@ -42,10 +56,10 @@ const services = [
 									<path d="M15.2 16.6h2.6M16.6 18.2V20" stroke-linecap="round" />
 								</svg>
 							)}
-							{service.icon === "panel" && (
+							{service.icon === "home" && (
 								<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-									<rect x="3.5" y="4" width="17" height="16" rx="2" />
-									<path d="M3.5 9h17M9 9v11" stroke-linecap="round" />
+									<path d="m3.5 10 8.5-7 8.5 7v10.5h-6v-6h-5v6h-6V10Z" stroke-linejoin="round" />
+									<path d="M7.5 10h.01M16.5 10h.01" stroke-linecap="round" />
 								</svg>
 							)}
 						</span>
