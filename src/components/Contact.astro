@@ -28,24 +28,35 @@ import { contact } from "../data/contact";
 
 		<div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
 			<h3 class="text-lg font-semibold text-slate-900">Formulario de contacto</h3>
-			<p id="formulario-pendiente" class="mt-2 text-sm leading-relaxed text-slate-600">
-				El formulario aún no envía mensajes. Para activarlo hace falta configurar un servicio de envío y decidir
-				dónde se recibirán las consultas. No introduzcas datos aquí por ahora.
+			<p id="formulario-descripcion" class="mt-2 text-sm leading-relaxed text-slate-600">
+				Completa los campos para enviar tu consulta.
 			</p>
-			<form class="mt-6" aria-describedby="formulario-pendiente">
-				<fieldset disabled class="grid gap-5 sm:grid-cols-2">
+			<form
+				id="contact-form"
+				class="mt-6"
+				action="https://api.web3forms.com/submit"
+				method="POST"
+				aria-describedby="formulario-descripcion"
+			>
+				<input
+					type="hidden"
+					name="access_key"
+					value={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? ""}
+				/>
+				<input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+				<fieldset class="grid gap-5 sm:grid-cols-2">
 					<legend class="sr-only">Datos de contacto y proyecto</legend>
 					<div>
 						<label for="nombre" class="mb-1.5 block text-sm font-medium text-slate-700">Nombre</label>
-						<input id="nombre" name="nombre" autocomplete="name" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100" />
+						<input id="nombre" name="nombre" type="text" autocomplete="name" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100" />
 					</div>
 					<div>
 						<label for="email" class="mb-1.5 block text-sm font-medium text-slate-700">Email</label>
-						<input id="email" name="email" type="email" autocomplete="email" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100" />
+						<input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100" />
 					</div>
 					<div class="sm:col-span-2">
 						<label for="tipo-proyecto" class="mb-1.5 block text-sm font-medium text-slate-700">Tipo de proyecto</label>
-						<select id="tipo-proyecto" name="tipo-proyecto" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100">
+						<select id="tipo-proyecto" name="tipo-proyecto" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100">
 							<option value="">Selecciona una opción</option>
 							<option value="web">Desarrollo web</option>
 							<option value="software">Software y automatización</option>
@@ -55,13 +66,93 @@ import { contact } from "../data/contact";
 					</div>
 					<div class="sm:col-span-2">
 						<label for="descripcion" class="mb-1.5 block text-sm font-medium text-slate-700">¿Qué necesitas?</label>
-						<textarea id="descripcion" name="descripcion" rows="4" class="w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100"></textarea>
+						<textarea id="descripcion" name="descripcion" rows="4" required class="w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm disabled:cursor-not-allowed disabled:bg-slate-100"></textarea>
 					</div>
 					<div class="sm:col-span-2">
-						<button type="submit" disabled class="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">Enviar consulta</button>
+						<button type="submit" class="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">Enviar consulta</button>
 					</div>
 				</fieldset>
 			</form>
+			<p id="contact-status" class="mt-4 text-sm text-slate-600" role="status" aria-live="polite" hidden></p>
 		</div>
 	</div>
 </section>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>("#contact-form");
+	const status = document.querySelector<HTMLParagraphElement>("#contact-status");
+	const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+	if (!form || !status || !submitButton) {
+		throw new Error("No se pudo inicializar el formulario de contacto.");
+	}
+
+	form.addEventListener("submit", async (event) => {
+		event.preventDefault();
+
+		if (form.dataset.submitting === "true" || !form.reportValidity()) {
+			return;
+		}
+
+		const formData = new FormData(form);
+		if (!formData.get("access_key")) {
+			status.textContent = "El formulario no está configurado. Inténtalo de nuevo más tarde.";
+			status.hidden = false;
+			return;
+		}
+
+		form.dataset.submitting = "true";
+		submitButton.disabled = true;
+		status.textContent = "Enviando consulta…";
+		status.hidden = false;
+
+		try {
+			const response = await fetch(form.action, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify(Object.fromEntries(formData.entries())),
+			});
+			const result: unknown = await response.json();
+
+			if (!response.ok || !isSuccessfulResponse(result)) {
+				status.textContent =
+					getResponseMessage(result) ?? "No se pudo enviar la consulta. Inténtalo de nuevo más tarde.";
+				return;
+			}
+
+			form.reset();
+			status.textContent = "Tu consulta se ha enviado correctamente.";
+		} catch {
+			status.textContent = "No se pudo enviar la consulta. Comprueba tu conexión e inténtalo de nuevo.";
+		} finally {
+			form.dataset.submitting = "false";
+			submitButton.disabled = false;
+		}
+	});
+
+	function isSuccessfulResponse(result: unknown): result is { success: true } {
+		return typeof result === "object" && result !== null && "success" in result && result.success === true;
+	}
+
+	function getResponseMessage(result: unknown): string | undefined {
+		if (typeof result !== "object" || result === null) {
+			return undefined;
+		}
+
+		if ("message" in result && typeof result.message === "string") {
+			return result.message;
+		}
+
+		if ("body" in result && typeof result.body === "object" && result.body !== null) {
+			const body = result.body;
+			if ("message" in body && typeof body.message === "string") {
+				return body.message;
+			}
+		}
+
+		return undefined;
+	}
+</script>
