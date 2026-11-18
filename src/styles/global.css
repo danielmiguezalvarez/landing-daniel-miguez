@@ -2,10 +2,33 @@
 
 @theme {
 	--font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-	--color-petrol: #0c4f5c;
-	--color-petrol-hover: #083843;
+	--color-brand: #16713c;
+	--color-brand-hover: #105a30;
+	--color-slate-50: #f5f8f5;
+	--color-slate-100: #edf3ee;
+	--color-slate-200: #dce7de;
+	--color-slate-300: #c8d6cb;
+	--color-slate-400: #95a499;
+	--color-slate-500: #68776b;
+	--color-slate-600: #526256;
+	--color-slate-700: #3a4b3e;
+	--color-slate-900: #17231a;
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+section[id] {
+	scroll-margin-top: 6rem;
+}
+
+:focus-visible {
+	outline-color: var(--color-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
