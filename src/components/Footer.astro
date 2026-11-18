@@ -1,45 +1,40 @@
 ---
-const whatsappUrl = "https://wa.me/34000000000";
-const linkedinUrl = "https://www.linkedin.com/";
+import { contact } from "../data/contact";
+import logo from "../assets/dm-integra-logo.png";
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-slate-200 bg-slate-50">
-	<div class="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
+	<div class="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-6 md:grid-cols-3">
 		<div>
-			<p class="text-sm font-semibold text-slate-900">[Mi Marca / Nombre]</p>
-			<p class="mt-2 text-sm text-slate-500">Software a medida para negocios locales en Galicia.</p>
+			<img src={logo.src} alt="DM Integra" width="1559" height="326" class="h-9 w-auto" />
+			<p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">
+				Desarrollo web, software y automatización para empresas y pequeños negocios.
+			</p>
 		</div>
-		<nav aria-label="Contacto" class="flex flex-col gap-3 text-sm">
-			<a
-				href={whatsappUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="font-medium text-slate-700 underline-offset-4 hover:text-petrol hover:underline"
-			>
-				WhatsApp
-			</a>
-			<a
-				href={linkedinUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="font-medium text-slate-700 underline-offset-4 hover:text-petrol hover:underline"
-			>
-				LinkedIn
-			</a>
+		<nav aria-label="Navegación del pie de página" class="flex flex-col items-start gap-3 text-sm">
+			<a href="#servicios" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Servicios</a>
+			<a href="#proyectos" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Proyectos</a>
+			<a href="#sobre" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Sobre mí</a>
+			<a href="#contacto" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Contacto</a>
 		</nav>
-		<nav aria-label="Legal" class="flex flex-col gap-3 text-sm">
-			<a href="#aviso-legal" class="text-slate-500 underline-offset-4 hover:text-slate-900 hover:underline">
-				Aviso Legal
+		<div class="flex flex-col items-start gap-3 text-sm">
+			<a href={contact.whatsappUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">
+				WhatsApp · {contact.whatsappDisplayNumber}
 			</a>
-			<a href="#privacidad" class="text-slate-500 underline-offset-4 hover:text-slate-900 hover:underline">
-				Política de Privacidad
-			</a>
-		</nav>
+			<a href="#aviso-legal" class="text-slate-500 underline-offset-4 hover:text-brand hover:underline">Aviso legal</a>
+			<a href="#privacidad" class="text-slate-500 underline-offset-4 hover:text-brand hover:underline">Política de privacidad</a>
+		</div>
+	</div>
+	<div class="border-t border-slate-200">
+		<div class="mx-auto grid max-w-6xl gap-2 px-5 py-5 text-xs leading-relaxed text-slate-500 sm:px-6 md:grid-cols-2 md:gap-6">
+			<p id="aviso-legal">Aviso legal pendiente de completar con la identidad y los datos del titular.</p>
+			<p id="privacidad">Política de privacidad pendiente de definir con el responsable, los fines y los servicios de envío de datos.</p>
+		</div>
 	</div>
 	<div class="border-t border-slate-200">
 		<p class="mx-auto max-w-6xl px-5 py-5 text-xs text-slate-500 sm:px-6">
-			© {year} [Mi Marca / Nombre]. Todos los derechos reservados.
+			© {year} · DM Integra
 		</p>
 	</div>
 </footer>

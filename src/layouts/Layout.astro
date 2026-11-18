@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-	title = "Software a medida para negocios locales",
-	description = "Sustituye los Excel y las tareas manuales por sistemas que trabajan por ti: reservas, cobros y automatización para pymes en Galicia.",
+	title = "DM Integra | Desarrollo web, software y automatización",
+	description = "Soluciones tecnológicas a medida para empresas: desarrollo web, software, automatización e integración de dispositivos.",
 } = Astro.props;
 ---
 
@@ -18,9 +18,12 @@ const {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f5f8f5" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,6 +33,9 @@ const {
 		/>
 	</head>
 	<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+		<a href="#contenido" class="sr-only z-[100] rounded-lg bg-white px-4 py-3 text-sm font-semibold text-brand focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+			Saltar al contenido
+		</a>
 		<slot />
 	</body>
 </html>
