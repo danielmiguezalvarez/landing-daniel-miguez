@@ -31,12 +31,23 @@ import { contact } from "../data/contact";
 			<p id="formulario-descripcion" class="mt-2 text-sm leading-relaxed text-slate-600">
 				Completa los campos para enviar tu consulta.
 			</p>
+			<p id="formulario-privacidad" class="mt-3 text-sm leading-relaxed text-slate-600">
+				Responsable: Daniel Míguez Álvarez (DM Integra). El formulario recoge tu nombre, email, tipo de proyecto
+				y mensaje para responderte. Para solicitudes de presupuesto o medidas precontractuales se aplica el
+				artículo 6.1.b del RGPD; para consultas generales iniciadas por ti, el interés legítimo de responder
+				(artículo 6.1.f), limitado a esa consulta. Los datos se envían mediante Web3Forms y se reciben por email
+				con Cloudflare Email Routing y Gmail. Se eliminan de Web3Forms a los 30 días y, si no hay contratación,
+				de Gmail a los 3 meses de la última comunicación. No se usan para publicidad ni newsletters. Puedes
+				ejercer tus derechos en contacto@dmintegra.es. Consulta la
+				<a href="/privacidad" class="font-medium text-brand underline underline-offset-2 hover:text-brand-hover">política de privacidad</a>
+				y el <a href="/aviso-legal" class="font-medium text-brand underline underline-offset-2 hover:text-brand-hover">aviso legal</a>.
+			</p>
 			<form
 				id="contact-form"
-				class="mt-6"
+				class="mt-4"
 				action="https://api.web3forms.com/submit"
 				method="POST"
-				aria-describedby="formulario-descripcion"
+				aria-describedby="formulario-descripcion formulario-privacidad"
 			>
 				<input
 					type="hidden"
