@@ -2,6 +2,13 @@
 import { contact } from "../data/contact";
 import logo from "../assets/dm-integra-logo.png";
 const year = new Date().getFullYear();
+
+interface Props {
+	isHome?: boolean;
+}
+
+const { isHome = true } = Astro.props;
+const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 ---
 
 <footer class="border-t border-slate-200 bg-slate-50">
@@ -13,10 +20,10 @@ const year = new Date().getFullYear();
 			</p>
 		</div>
 		<nav aria-label="Navegación del pie de página" class="flex flex-col items-start gap-3 text-sm">
-			<a href="#servicios" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Servicios</a>
-			<a href="#proyectos" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Proyectos</a>
-			<a href="#sobre" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Sobre mí</a>
-			<a href="#contacto" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Contacto</a>
+			<a href={sectionHref("servicios")} class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Servicios</a>
+			<a href={sectionHref("proyectos")} class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Proyectos</a>
+			<a href={sectionHref("sobre")} class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Sobre mí</a>
+			<a href={sectionHref("contacto")} class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">Contacto</a>
 		</nav>
 		<div class="flex flex-col items-start gap-3 text-sm">
 			<a href={contact.whatsappUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-slate-700 underline-offset-4 hover:text-brand hover:underline">
