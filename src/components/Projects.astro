@@ -7,7 +7,22 @@ const projects = [
 		image: "/projects/app-icultura/02-colmenar.png",
 		imageAlt: "Vista de un colmenar con la distribución por filas y el estado de las colmenas",
 		imageLabel: "Abrir la captura del colmenar a tamaño original en una pestaña nueva",
+		imageWidth: 1440,
+		imageHeight: 1117,
+		href: "/proyectos/app-icultura",
 		capabilities: ["Planificación de trabajo de campo", "Inventario y consumos", "Previsión de existencias"],
+	},
+	{
+		title: "Amaruzen",
+		description:
+			"Una aplicación para coordinar salas, profesionales, clases, alumnos, reservas y cambios de sesión desde un calendario común.",
+		image: "/projects/amaruzen/02-calendario-salas.png",
+		imageAlt: "Calendario semanal de Amaruzen con clases y reservas distribuidas entre dos salas",
+		imageLabel: "Abrir la captura del calendario de salas de Amaruzen a tamaño original en una pestaña nueva",
+		imageWidth: 1440,
+		imageHeight: 998,
+		href: "/proyectos/amaruzen",
+		capabilities: ["Calendario unificado", "Gestión de clases y alumnos", "Reservas y cambios"],
 	},
 ];
 ---
@@ -20,46 +35,22 @@ const projects = [
 				Tecnología que resuelve necesidades reales
 			</h2>
 			<p class="mt-4 text-lg leading-relaxed text-slate-600">
-				Un ejemplo de cómo organizar mejor el trabajo y los recursos de un negocio.
+				Dos ejemplos de cómo organizar mejor el trabajo, las personas y los recursos de un negocio.
 			</p>
 		</div>
 
-		<div class="mt-10 grid gap-6">
+		<div class="mt-10 grid gap-6 md:grid-cols-2">
 			{
 				projects.map((project) => (
-					<article class="grid overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm lg:grid-cols-[0.9fr_1.1fr]">
-						<div class="flex flex-col items-start p-6 sm:p-8 lg:p-10">
-							<p class="text-sm font-medium tracking-wide text-brand">Proyecto propio · software de gestión</p>
-							<h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">{project.title}</h3>
-							<p class="mt-4 leading-relaxed text-slate-600">{project.description}</p>
-							<ul class="mt-6 flex flex-wrap gap-2" aria-label="Capacidades destacadas">
-								{project.capabilities.map((capability) => (
-									<li class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700">
-										{capability}
-									</li>
-								))}
-							</ul>
-							<div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-								<a
-									href="/proyectos/app-icultura"
-									class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-								>
-									Ver caso práctico <span aria-hidden="true">→</span>
-								</a>
-								<a href="#contacto" class="text-sm font-semibold text-brand underline-offset-4 hover:underline">
-									Hablemos de tu proceso
-								</a>
-							</div>
-						</div>
-
-						<figure class="flex flex-col justify-center border-t border-slate-200 bg-white p-4 sm:p-6 lg:border-l lg:border-t-0">
+					<article class="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
+						<figure class="border-b border-slate-200 bg-white p-4 sm:p-6">
 							<a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={project.imageLabel}>
 								<img
 									src={project.image}
 									alt={project.imageAlt}
-									width="1440"
-									height="1117"
-									fetchpriority="high"
+									width={project.imageWidth}
+									height={project.imageHeight}
+									loading="lazy"
 									decoding="async"
 									class="block h-auto w-full rounded-xl border border-slate-200"
 								/>
@@ -77,6 +68,30 @@ const projects = [
 								</a>
 							</figcaption>
 						</figure>
+
+						<div class="flex flex-1 flex-col items-start p-6 sm:p-8">
+							<p class="text-sm font-medium tracking-wide text-brand">Proyecto propio · software de gestión</p>
+							<h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">{project.title}</h3>
+							<p class="mt-4 leading-relaxed text-slate-600">{project.description}</p>
+							<ul class="mt-6 flex flex-wrap gap-2" aria-label="Capacidades destacadas">
+								{project.capabilities.map((capability) => (
+									<li class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700">
+										{capability}
+									</li>
+								))}
+							</ul>
+							<div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-3 pt-7">
+								<a
+									href={project.href}
+									class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+								>
+									Ver caso práctico <span aria-hidden="true">→</span>
+								</a>
+								<a href="#contacto" class="text-sm font-semibold text-brand underline-offset-4 hover:underline">
+									Hablemos de tu proceso
+								</a>
+							</div>
+						</div>
 					</article>
 				))
 			}

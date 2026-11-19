@@ -1,0 +1,185 @@
+---
+import Footer from "../../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+
+const screenshots = [
+	{
+		title: "Panel de gestión",
+		description: "Una vista general de la actividad, las sesiones del día y los cambios pendientes.",
+		src: "/projects/amaruzen/01-panel-admin.png",
+		alt: "Panel de Amaruzen con resumen de alumnos, clases, cambios pendientes y sesiones del día",
+		width: 1440,
+		height: 900,
+	},
+	{
+		title: "Calendario común de salas",
+		description: "Consulta las clases y reservas por sala a lo largo de la semana.",
+		src: "/projects/amaruzen/02-calendario-salas.png",
+		alt: "Calendario semanal de Amaruzen que distribuye clases y reservas entre las salas Alba y Brisa",
+		width: 1440,
+		height: 998,
+	},
+	{
+		title: "Alumnos, clases y cambios",
+		description: "Organiza las clases, consulta sus alumnos y revisa las solicitudes de cambio de sesión.",
+		src: "/projects/amaruzen/04-alumnos-cambios.png",
+		alt: "Vista de Amaruzen para gestionar alumnos, clases y solicitudes de cambio de sesión",
+		width: 1440,
+		height: 900,
+	},
+	{
+		title: "Reservas de profesionales",
+		description: "Un flujo para que cada profesional consulte la disponibilidad y solicite el uso de una sala.",
+		src: "/projects/amaruzen/05-calendario-profesional.png",
+		alt: "Calendario de Amaruzen para que un profesional consulte y solicite una reserva de sala",
+		width: 1440,
+		height: 999,
+	},
+];
+---
+
+<Layout
+	title="Amaruzen | Caso práctico | DM Integra"
+	description="Caso práctico de Amaruzen: coordinación de salas, profesionales, clases, alumnos, reservas y cambios de sesión con un calendario común."
+>
+	<Navbar isHome={false} />
+	<main id="contenido">
+		<section class="border-b border-slate-200 bg-slate-50">
+			<div class="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
+				<a
+					href="/#proyectos"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-brand underline-offset-4 hover:underline"
+				>
+					<span aria-hidden="true">←</span> Volver a proyectos
+				</a>
+				<p class="mt-10 text-sm font-medium tracking-wide text-brand">Caso práctico · proyecto propio</p>
+				<h1 class="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+					Amaruzen: espacios y sesiones coordinados
+				</h1>
+				<p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600">
+					Una aplicación de gestión para coordinar varias salas y profesionales, y mantener clases, alumnos, reservas y
+					cambios de sesión en un calendario común.
+				</p>
+			</div>
+		</section>
+
+		<section class="bg-white">
+			<div class="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
+				<div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
+					<article class="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
+						<p class="text-sm font-medium tracking-wide text-brand">El problema</p>
+						<h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
+							Coordinar personas, sesiones y salas sin perder el contexto
+						</h2>
+						<p class="mt-4 leading-relaxed text-slate-600">
+							Cuando un centro trabaja con varias salas y profesionales, las clases y reservas deben encajar en un
+							calendario compartido. También hace falta saber qué espacios están ocupados, quién asiste a cada clase y
+							cómo afectan las solicitudes de uso de salas o los cambios de sesión a la planificación.
+						</p>
+						<p class="mt-3 leading-relaxed text-slate-600">
+							Con esa información repartida, cuesta consultar la disponibilidad y mantener alineadas las agendas de
+							profesionales, clases y alumnos.
+						</p>
+					</article>
+
+					<article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+						<p class="text-sm font-medium tracking-wide text-brand">La solución implementada</p>
+						<h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
+							Una gestión común de actividad y espacios
+						</h2>
+						<p class="mt-4 leading-relaxed text-slate-600">
+							Amaruzen reúne la operativa del centro para consultar la actividad, organizar sesiones y tramitar
+							solicitudes sin perder de vista la ocupación de las salas.
+						</p>
+						<ul class="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+							<li><strong class="font-semibold text-slate-900">Panel de gestión:</strong> ofrece un resumen de sesiones y cambios pendientes.</li>
+							<li><strong class="font-semibold text-slate-900">Calendario unificado:</strong> muestra sesiones y reservas por sala.</li>
+							<li><strong class="font-semibold text-slate-900">Clases y alumnos:</strong> permite consultar y organizar la actividad de cada clase.</li>
+							<li><strong class="font-semibold text-slate-900">Cambios de sesión:</strong> centraliza las solicitudes para darles seguimiento.</li>
+							<li><strong class="font-semibold text-slate-900">Reservas profesionales:</strong> facilita consultar disponibilidad y solicitar una sala.</li>
+						</ul>
+					</article>
+				</div>
+
+				<aside class="mt-8 rounded-2xl border-l-4 border-brand bg-brand/5 p-6 sm:p-8">
+					<h2 class="text-xl font-semibold tracking-tight text-slate-900">Una base adaptable a otros espacios</h2>
+					<p class="mt-3 max-w-4xl leading-relaxed text-slate-600">
+						Este tipo de organización podría adaptarse a centros formativos, academias, centros de salud o bienestar y
+						negocios que gestionen espacios y citas. Son posibilidades de adaptación, no clientes ni implantaciones
+						existentes.
+					</p>
+				</aside>
+
+				<section class="mt-14" aria-labelledby="amaruzen-gallery-title">
+					<div class="max-w-2xl">
+						<p class="text-sm font-medium tracking-wide text-brand">La aplicación en uso</p>
+						<h2 id="amaruzen-gallery-title" class="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+							Capturas de la gestión diaria
+						</h2>
+						<p class="mt-3 leading-relaxed text-slate-600">
+							Abre cualquier captura para verla a tamaño original y leer todos sus detalles.
+						</p>
+					</div>
+
+					<div class="mt-7 grid gap-6 md:grid-cols-2">
+						{
+							screenshots.map((screenshot) => (
+								<figure class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+									<a
+										href={screenshot.src}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={`Abrir captura de ${screenshot.title} a tamaño original en una pestaña nueva`}
+									>
+										<img
+											src={screenshot.src}
+											alt={screenshot.alt}
+											width={screenshot.width}
+											height={screenshot.height}
+											loading="lazy"
+											decoding="async"
+											class="block h-auto w-full"
+										/>
+									</a>
+									<figcaption class="border-t border-slate-200 p-5 sm:p-6">
+										<h3 class="font-semibold text-slate-900">{screenshot.title}</h3>
+										<p class="mt-2 text-sm leading-relaxed text-slate-600">{screenshot.description}</p>
+										<a
+											href={screenshot.src}
+											target="_blank"
+											rel="noopener noreferrer"
+											aria-label={`Abrir captura de ${screenshot.title} a tamaño original en una pestaña nueva`}
+											class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand underline-offset-4 hover:underline"
+										>
+											Abrir captura a tamaño original <span aria-hidden="true">↗</span>
+										</a>
+									</figcaption>
+								</figure>
+							))
+						}
+					</div>
+					<p class="mt-5 text-sm font-medium text-slate-700">
+						Capturas reales de la aplicación con datos ficticios.
+					</p>
+				</section>
+
+				<section class="mt-14 rounded-2xl bg-brand px-6 py-8 text-white sm:px-8 sm:py-10" aria-labelledby="amaruzen-cta-title">
+					<h2 id="amaruzen-cta-title" class="max-w-2xl text-2xl font-semibold tracking-tight sm:text-3xl">
+						¿Necesitas coordinar espacios, citas o sesiones?
+					</h2>
+					<p class="mt-3 max-w-2xl leading-relaxed text-white/85">
+						Cuéntame qué proceso quieres mejorar y lo analizamos juntos.
+					</p>
+					<a
+						href="/#contacto"
+						class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+					>
+						Hablemos de tu proceso <span aria-hidden="true">→</span>
+					</a>
+				</section>
+			</div>
+		</section>
+	</main>
+	<Footer isHome={false} />
+</Layout>
