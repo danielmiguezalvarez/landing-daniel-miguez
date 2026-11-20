@@ -49,11 +49,11 @@ const screenshots = [
 			<div class="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
 				<a
 					href="/#proyectos"
-					class="inline-flex items-center gap-2 text-sm font-semibold text-brand underline-offset-4 hover:underline"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 underline decoration-brand underline-offset-4"
 				>
 					<span aria-hidden="true">←</span> Volver a proyectos
 				</a>
-				<p class="mt-10 text-sm font-medium tracking-wide text-brand">Caso práctico · proyecto propio</p>
+				<p class="mt-10 border-l-2 border-brand pl-3 text-sm font-semibold tracking-wide text-slate-900">Caso práctico</p>
 				<h1 class="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
 					App-icultura: más claridad en cada jornada
 				</h1>
@@ -67,8 +67,8 @@ const screenshots = [
 		<section class="bg-white">
 			<div class="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-20">
 				<div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
-					<article class="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
-						<p class="text-sm font-medium tracking-wide text-brand">El problema</p>
+					<article class="border border-slate-200 bg-slate-50 p-6 sm:p-8">
+						<p class="border-l-2 border-brand pl-3 text-sm font-semibold tracking-wide text-slate-900">El problema</p>
 						<h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
 							Información repartida entre notas, tareas y materiales
 						</h2>
@@ -82,8 +82,8 @@ const screenshots = [
 						</p>
 					</article>
 
-					<article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-						<p class="text-sm font-medium tracking-wide text-brand">La solución implementada</p>
+					<article class="border border-slate-200 bg-white p-6 sm:p-8">
+						<p class="border-l-2 border-brand pl-3 text-sm font-semibold tracking-wide text-slate-900">La solución implementada</p>
 						<h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
 							Una vista conectada del campo y los recursos
 						</h2>
@@ -100,7 +100,7 @@ const screenshots = [
 					</article>
 				</div>
 
-				<aside class="mt-8 rounded-2xl border-l-4 border-brand bg-brand/5 p-6 sm:p-8">
+				<aside class="mt-8 border-l-4 border-brand bg-slate-100 p-6 sm:p-8">
 					<h2 class="text-xl font-semibold tracking-tight text-slate-900">Un enfoque útil más allá de la apicultura</h2>
 					<p class="mt-3 max-w-4xl leading-relaxed text-slate-600">
 						La misma lógica de organizar trabajo de campo, recursos y trazabilidad puede aplicarse a otros procesos
@@ -111,7 +111,7 @@ const screenshots = [
 
 				<section class="mt-14" aria-labelledby="app-icultura-gallery-title">
 					<div class="max-w-2xl">
-						<p class="text-sm font-medium tracking-wide text-brand">La aplicación en uso</p>
+						<p class="border-l-2 border-brand pl-3 text-sm font-semibold tracking-wide text-slate-900">La aplicación en uso</p>
 						<h2 id="app-icultura-gallery-title" class="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
 							Capturas del trabajo diario
 						</h2>
@@ -123,7 +123,7 @@ const screenshots = [
 					<div class="mt-7 grid gap-6 md:grid-cols-2">
 						{
 							screenshots.map((screenshot) => (
-								<figure class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+								<figure class="overflow-hidden border border-slate-200 bg-white">
 									<a
 										href={screenshot.src}
 										target="_blank"
@@ -148,7 +148,7 @@ const screenshots = [
 											target="_blank"
 											rel="noopener noreferrer"
 											aria-label={`Abrir captura de ${screenshot.title} a tamaño original en una pestaña nueva`}
-											class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand underline-offset-4 hover:underline"
+											class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 underline decoration-brand underline-offset-4"
 										>
 											Abrir captura a tamaño original <span aria-hidden="true">↗</span>
 										</a>
@@ -160,18 +160,18 @@ const screenshots = [
 					<p class="mt-5 text-sm font-medium text-slate-700">Capturas reales de la aplicación con datos ficticios.</p>
 				</section>
 
-				<section class="mt-14 rounded-2xl bg-brand px-6 py-8 text-white sm:px-8 sm:py-10" aria-labelledby="app-icultura-cta-title">
+				<section class="mt-14 border-y border-brand bg-slate-100 px-6 py-8 text-slate-900 sm:px-8 sm:py-10" aria-labelledby="app-icultura-cta-title">
 					<h2 id="app-icultura-cta-title" class="max-w-2xl text-2xl font-semibold tracking-tight sm:text-3xl">
 						¿Tienes tareas, recursos o trabajo de campo que te gustaría coordinar mejor?
 					</h2>
-					<p class="mt-3 max-w-2xl leading-relaxed text-white/85">
-						Cuéntame qué proceso quieres mejorar y lo analizamos juntos.
+					<p class="mt-3 max-w-2xl leading-relaxed text-slate-700">
+						Explica qué proceso quieres mejorar y consulta las opciones para abordarlo.
 					</p>
 					<a
 						href="/#contacto"
-						class="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-brand transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+						class="mt-6 inline-flex items-center gap-2 border border-brand bg-brand px-5 py-3 text-sm font-semibold text-slate-900 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
 					>
-						Hablemos de tu proceso <span aria-hidden="true">→</span>
+						Contactar
 					</a>
 				</section>
 			</div>

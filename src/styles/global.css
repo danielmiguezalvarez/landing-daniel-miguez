@@ -1,58 +1,29 @@
 @import "tailwindcss";
 
-@font-face {
-	font-family: "DM Sans";
-	font-style: normal;
-	font-weight: 400 700;
-	font-display: swap;
-	src: url("/fonts/dm-sans-latin.woff2") format("woff2");
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-	font-family: "DM Sans";
-	font-style: normal;
-	font-weight: 400 700;
-	font-display: swap;
-	src: url("/fonts/dm-sans-latin-ext.woff2") format("woff2");
-	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-	font-family: "DM Sans";
-	font-style: italic;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/fonts/dm-sans-latin-italic.woff2") format("woff2");
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-	font-family: "DM Sans";
-	font-style: italic;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/fonts/dm-sans-latin-ext-italic.woff2") format("woff2");
-	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
 @theme {
-	--font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-	--color-brand: #16713c;
-	--color-brand-hover: #105a30;
-	--color-slate-50: #f5f8f5;
-	--color-slate-100: #edf3ee;
-	--color-slate-200: #dce7de;
-	--color-slate-300: #c8d6cb;
-	--color-slate-400: #95a499;
-	--color-slate-500: #68776b;
-	--color-slate-600: #526256;
-	--color-slate-700: #3a4b3e;
-	--color-slate-900: #17231a;
+	--font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--color-brand: #029905;
+	--color-brand-hover: #029905;
+	--color-sand: #ffffff;
+	--color-oat: #f7f7f8;
+	--color-white: #ffffff;
+	--color-slate-50: #ffffff;
+	--color-slate-100: #f7f7f8;
+	--color-slate-200: #d4d4d4;
+	--color-slate-300: #767676;
+	--color-slate-400: #686868;
+	--color-slate-500: #5c5c5c;
+	--color-slate-600: #4a4a4a;
+	--color-slate-700: #333333;
+	--color-slate-900: #111111;
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--color-white);
 }
 
 section[id] {
@@ -63,8 +34,21 @@ section[id] {
 	outline-color: var(--color-brand);
 }
 
+::selection {
+	color: var(--color-white);
+	background-color: var(--color-brand);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
 	}
 }
